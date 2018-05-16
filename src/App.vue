@@ -3,6 +3,7 @@
     <bmasterHeader></bmasterHeader>
     <bmasterNav></bmasterNav>
     <!-- <router-view></router-view> -->
+    <bmasterSection></bmasterSection>
     <bmasterFooter></bmasterFooter>
   </div>
 </template>
@@ -12,10 +13,11 @@
 import bmasterHeader from './components/BmasterHeader.vue';
 import bmasterFooter from './components/BmasterFooter.vue';
 import bmasterNav from './components/BmasterNav.vue';
+import bmasterSection from './components/BmasterSection.vue';
 
 export default{
   name : 'app',
-  components : { bmasterHeader, bmasterNav, bmasterFooter }
+  components : { bmasterHeader, bmasterNav, bmasterSection, bmasterFooter }
 }
 
 </script>

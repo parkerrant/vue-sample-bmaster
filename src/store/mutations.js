@@ -1,29 +1,12 @@
-export const UPDATE_AUTH = (state, auth) => {
-  state.auth = auth
-}
+//상태를 변경하는 기능만...
+//search keyword
+//search mode 정도 있을듯...
+//
 
-export const UPDATE_USER = (state, user) => {
-  state.user = user
-}
+import Constant from '../../const.js'
 
-export const APPNAV_SEARCH = (state, searchData) => {
-  state.appnav = searchData
-}
-
-/**
- * Clear each property, one by one, so reactivity still works.
- *
- * (ie. clear out state.auth.isLoggedIn so Navbar component automatically reacts to logged out state,
- * and the Navbar menu adjusts accordingly)
- *
- * TODO: use a common import of default state to reset these values with.
- */
-export const CLEAR_ALL_DATA = (state) => {
-  // Auth
-  state.auth.isLoggedIn = false
-  state.auth.accessToken = null
-  state.auth.refreshToken = null
-
-  // User
-  state.user.name = ''
+export default{
+  [Constant.UPDATE_SEARCH_MODE] : (state) => {
+    state.searchMode = !( state.searchMode );
+  }
 }

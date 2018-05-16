@@ -1,10 +1,4 @@
 export default {
-  auth: {
-    isLoggedIn: false,
-    accessToken: null,
-    refreshToken: null
-  },
-  user: {
-    name: null
-  }
+  contactList : [],
+  searchMode : false
 }
