@@ -3,10 +3,14 @@
 //search mode 정도 있을듯...
 //
 
-import Constant from '../../const.js'
+import Constant from '../const.js'
 
 export default{
   [Constant.UPDATE_SEARCH_MODE] : (state) => {
     state.searchMode = !( state.searchMode );
+  },
+
+  [Constant.FETCH_CONTACTS] : (state, payload) => {
+    state.contactList = payload;
   }
 }

@@ -1,10 +1,11 @@
-import Const from '../../const.js';
+import Constant from '../const.js';
 import contactsApi from '../api/ContactsAPI.js'
 
 export default {
-  [Constant.FETCH_CONTACT] : (store, payload) => {
+  [Constant.SELECT_CONTACTS] : (store, payload) => {
     //search
-    contactApi.fetchContacts(payload.);
+    let json = contactApi.selectContacts(payload.pageno, payload.pagesize);
+    store.commit(Const.FETCH_CONTACTS, json);
 
   }
 }
