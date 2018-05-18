@@ -1,4 +1,9 @@
 export default {
-  contactList : [],
-  searchMode : false
+
+  pageno : 1,
+
+  searchYn : false,
+
+  contacts : []
+
 }

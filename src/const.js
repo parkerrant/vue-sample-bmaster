@@ -1,6 +1,20 @@
 export default {
-  SELECT_CONTACTS : 'selectContacts',
-  UPDATE_SEARCH_MODE : 'updateSearchMode',
+  UPDATE_SEARCH_YN : 'updateSearchYn',
 
-  FETCH_CONTACTS : "fetchContacts"
+  SELECT_CONTACT : "selectContact",
+  SELECT_CONTACTS : "selectContacts",
+
+  SEARCH_CONTACTS : "searchContacts",
+
+  INSERT_CONTACTS : "insertContacts",
+
+  UPDATE_CONTACT : "updateContact",
+
+  DELTE_CONTACT : "deleteContact",
+
+  //mutations
+  CONCAT_CONTACTS : "concactContacts",
+  CLEAR_CONTACTS : "clearContacts",
+  UPDATE_PAGENO : "updatePageno"
+
 }

@@ -1,21 +1,20 @@
-import fetch from 'fetch';
+import 'fetch';
 import ES6promise from 'es6-promise';
+import Constant from "../const";
 
 ES6promise.polyfill();
 
 export default {
   selectContacts : (pageno, pagesize) => {
     var url = "http://sample.bmaster.kro.kr/contacts?pageno=" + pageno + "?pagesize=" + pagesize
-    fetch(url).then(function(response){
-        return response.json()
-    }).then(function(json){
-      alert(json.contacts)
-
-      return json.contacts
-
-    }).catch(function(ex){
-    })
+    return fetch(url)
   },
+
+  searchContacts : (searchKeyword) => {
+    var url = "http://sample.bmaster.kro.kr/contacts/search/" + searchKeyword
+    return fetch(url)
+  },
+
   selectContactOne : (no) => {
     var url = "http://sample.bmaster.kro.kr/contacts/" + no
 
