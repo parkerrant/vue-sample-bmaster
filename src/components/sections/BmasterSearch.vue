@@ -24,6 +24,7 @@ export default {
       this.$store.dispatch(Constant.SEARCH_CONTACTS, this.searchKeyword);
     },
     seeAllButtonClick : function(){
+      this.$store.commit(Constant.CLEAR_CONTACTS);
       this.$store.dispatch(Constant.SELECT_CONTACTS, {pageno : this.pageno, pagesize : 5});
     }
   },

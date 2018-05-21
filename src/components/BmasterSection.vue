@@ -6,6 +6,7 @@
     <article>
       <bmasterList></bmasterList>
     </article>
+
   </section>
 </template>
 

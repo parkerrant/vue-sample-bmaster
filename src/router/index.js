@@ -3,7 +3,23 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-const router = new Router({
+
+const Foo = { template: '<div>foo</div>' }
+
+const router = new Router ({
+  mode: 'history',
+  routes: [
+    {
+      path: '/test',
+      name: 'test',
+      component: Foo
+    }
+  ]
+})
+
+export default router
+
+/*const router = new Router({
   mode: 'history',
   routes: [
     // Each of these routes are loaded asynchronously, when a user first navigates to each corresponding endpoint.
@@ -32,8 +48,9 @@ const router = new Router({
       beforeEnter: guardRoute
     }
   ]
-})
+})*/
 
+/*
 function guardRoute (to, from, next) {
   // work-around to get to the Vuex store (as of Vue 2.0)
   const auth = router.app.$options.store.state.auth
@@ -49,3 +66,4 @@ function guardRoute (to, from, next) {
 }
 
 export default router
+*/

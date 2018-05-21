@@ -2,7 +2,11 @@
   <div id="app">
     <bmasterHeader></bmasterHeader>
     <bmasterNav></bmasterNav>
-    <!-- <router-view></router-view> -->
+
+
+    <router-link to="/test">Go to Test</router-link>
+    <router-view></router-view>
+
     <bmasterSection></bmasterSection>
     <bmasterFooter></bmasterFooter>
   </div>
@@ -17,6 +21,7 @@ import bmasterSection from './components/BmasterSection.vue';
 
 export default{
   name : 'app',
+
   components : { bmasterHeader, bmasterNav, bmasterSection, bmasterFooter }
 }
 
