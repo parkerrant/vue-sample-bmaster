@@ -27,7 +27,7 @@
 
 <script type="text/javascript">
 
-import Constant from '../../const.js';
+import Constant from '../../../const.js';
 import { mapState } from 'vuex';
 
 

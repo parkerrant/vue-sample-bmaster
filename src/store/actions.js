@@ -1,5 +1,5 @@
-import Constant from '../const.js';
-import ContactsApi from '../api/ContactsAPI.js';
+import Constant from '@/const.js';
+import ContactsApi from '@/api/ContactsAPI.js';
 
 export default {
   [Constant.SELECT_CONTACTS] : (store, payload) => {
@@ -32,5 +32,19 @@ export default {
     }).catch(function(ex){
     })
 
+  },
+
+  [Constant.DELETE_CONTACT] : (store, payload) => {
+
+    //search
+    ContactsApi.deleteContact(payload)
+      .then(function(response){
+        return response.json()
+      }).then(function(json){
+      store.commit(Constant.DELETE_CONTACT, payload);
+    }).catch(function(ex){
+    })
+
   }
+
 }

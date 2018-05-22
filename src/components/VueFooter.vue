@@ -1,7 +1,7 @@
 <template>
-  <header>
-    <p>header area</p>
-  </header>
+  <footer>
+    <p>footer area</p>
+  </footer>
 </template>
 
 
@@ -10,7 +10,7 @@
 <script type="text/javascript">
 
 export default {
-  name: 'bmasterHooter'
+  name: 'vueFooter'
 }
 
 </script>

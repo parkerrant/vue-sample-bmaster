@@ -1,69 +1,36 @@
-import Vue from 'vue'
-import Router from 'vue-router'
+import Vue from 'vue';
+import Router from 'vue-router';
 
 Vue.use(Router)
-
-
-const Foo = { template: '<div>foo</div>' }
 
 const router = new Router ({
   mode: 'history',
   routes: [
+
     {
-      path: '/test',
-      name: 'test',
-      component: Foo
+      path: '/contacts',
+      component: function (resolve) {
+        require(['@/components/contacts/contacts.vue'], resolve)
+      },
+      children: [
+        {
+          path: '/',
+          components: {
+            a: function (resolve) { require(['@/components/contacts/contactsListOption.vue'], resolve) },
+            b: function (resolve) { require(['@/components/contacts/contactsList.vue'], resolve) }
+          }
+        },
+        {
+          path: '/contact/:no',
+          components: {
+            a: function (resolve) { require(['@/components/contacts/contactsListOption.vue'], resolve) },
+            b: function (resolve) { require(['@/components/contacts/contactsList.vue'], resolve) }
+          }
+        }
+      ]
     }
+
   ]
 })
 
 export default router
-
-/*const router = new Router({
-  mode: 'history',
-  routes: [
-    // Each of these routes are loaded asynchronously, when a user first navigates to each corresponding endpoint.
-    // The route will load once into memory, the first time it's called, and no more on future calls.
-    // This behavior can be observed on the network tab of your browser dev tools.
-    {
-      path: '/login',
-      name: 'login',
-      component: function (resolve) {
-        require(['@/components/login/Login.vue'], resolve)
-      }
-    },
-    {
-      path: '/signup',
-      name: 'signup',
-      component: function (resolve) {
-        require(['@/components/signup/Signup.vue'], resolve)
-      }
-    },
-    {
-      path: '/',
-      name: 'dashboard',
-      component: function (resolve) {
-        require(['@/components/dashboard/Dashboard.vue'], resolve)
-      },
-      beforeEnter: guardRoute
-    }
-  ]
-})*/
-
-/*
-function guardRoute (to, from, next) {
-  // work-around to get to the Vuex store (as of Vue 2.0)
-  const auth = router.app.$options.store.state.auth
-
-  if (!auth.isLoggedIn) {
-    next({
-      path: '/login',
-      query: { redirect: to.fullPath }
-    })
-  } else {
-    next()
-  }
-}
-
-export default router
-*/

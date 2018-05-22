@@ -1,28 +1,23 @@
 <template>
   <div id="app">
-    <bmasterHeader></bmasterHeader>
-    <bmasterNav></bmasterNav>
-
-
-    <router-link to="/test">Go to Test</router-link>
+    <vueHeader></vueHeader>
+    <vueNav></vueNav>
     <router-view></router-view>
-
-    <bmasterSection></bmasterSection>
-    <bmasterFooter></bmasterFooter>
+    <vueFooter></vueFooter>
   </div>
 </template>
 
+
+
 <script type="text/javascript">
 
-import bmasterHeader from './components/BmasterHeader.vue';
-import bmasterFooter from './components/BmasterFooter.vue';
-import bmasterNav from './components/BmasterNav.vue';
-import bmasterSection from './components/BmasterSection.vue';
+import vueHeader from '@/components/VueHeader.vue';
+import vueFooter from '@/components/VueFooter.vue';
+import vueNav from '@/components/VueNav.vue';
 
 export default{
   name : 'app',
-
-  components : { bmasterHeader, bmasterNav, bmasterSection, bmasterFooter }
+  components : { vueHeader, vueNav, vueFooter }
 }
 
 </script>

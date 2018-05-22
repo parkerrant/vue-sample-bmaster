@@ -1,7 +1,8 @@
 <template>
-  <footer>
+  <nav>
     <p>nav area</p>
-  </footer>
+    <router-link to="/contacts">Go to Contacts List</router-link>
+  </nav>
 </template>
 
 
@@ -10,7 +11,7 @@
 <script type="text/javascript">
 
 export default {
-  name: 'bmasterNav'
+  name: 'vueNav'
 }
 
 </script>
