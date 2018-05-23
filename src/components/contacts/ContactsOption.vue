@@ -10,11 +10,11 @@
 
 <script type="text/javascript">
 
-import Constant from '../../const.js'
+import Constant from '@/const.js'
 import { mapState } from 'vuex';
 
 export default {
-  name: 'bmasterSearch',
+  name: 'contactsOption',
   data : function(){
     return {searchKeyword : ''}
   },
@@ -22,6 +22,9 @@ export default {
     searchButtonClick : function(){
       //search action act
       this.$store.commit(Constant.UPDATE_SEARCH_KEYWORD, this.searchKeyword);
+      this.$store.commit(Constant.CLEAR_CONTACTS);
+      this.$store.commit(Constant.UPDATE_SEARCH_YN, true);
+      this.$store.commit(Constant.UPDATE_PAGENO, 1);
       this.$store.dispatch(Constant.SEARCH_CONTACTS, this.searchKeyword);
 
     },

@@ -27,12 +27,12 @@
 
 <script type="text/javascript">
 
-import Constant from '../../../const.js';
+import Constant from '@/const.js';
 import { mapState } from 'vuex';
 
 
 export default {
-  name: 'bmasterList',
+  name: 'contactAdd',
   computed : mapState([ 'contacts', 'pageno', 'searchYn' ]),
   methods : {
     fetchButtonClick : function() {

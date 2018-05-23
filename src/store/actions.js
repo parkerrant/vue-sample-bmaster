@@ -3,9 +3,6 @@ import ContactsApi from '@/api/ContactsAPI.js';
 
 export default {
   [Constant.SELECT_CONTACTS] : (store, payload) => {
-
-    store.commit(Constant.UPDATE_SEARCH_YN, false);
-
     //search
     ContactsApi.selectContacts(payload.pageno, payload.pagesize)
       .then(function(response){
@@ -17,11 +14,19 @@ export default {
     })
   },
 
-  [Constant.SEARCH_CONTACTS] : (store, payload) => {
+  [Constant.SELECT_CONTACT] : (store, payload) => {
 
-    store.commit(Constant.CLEAR_CONTACTS);
-    store.commit(Constant.UPDATE_SEARCH_YN, true);
-    store.commit(Constant.UPDATE_PAGENO, 1);
+      ContactsApi.selectContact(payload.no)
+      .then(function(response){
+        return response.json()
+      }).then(function(json){
+      store.commit(Constant.UPDATE_CONTACT, json.contacts);
+    }).catch(function(ex){
+    })
+
+  },
+
+  [Constant.SEARCH_CONTACTS] : (store, payload) => {
 
     //search
     ContactsApi.searchContacts(payload)

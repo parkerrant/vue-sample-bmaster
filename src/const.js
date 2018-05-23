@@ -6,13 +6,9 @@ export default {
 
   SELECT_CONTACT : "selectContact",
   SELECT_CONTACTS : "selectContacts",
-
   SEARCH_CONTACTS : "searchContacts",
-
   INSERT_CONTACTS : "insertContacts",
-
   UPDATE_CONTACT : "updateContact",
-
   DELETE_CONTACT : "deleteContact",
 
   //mutations

@@ -19,7 +19,7 @@
           <td>{{contact.tel}}</td>
           <td>{{contact.address}}</td>
           <td><input type="button" value="delete" @click="deleteButtonClick"></td>
-          <td><input type="button" value="update" @click="updateButtonClick"></td>
+          <td><input type="button" value="update" @click="infoButtonClick"></td>
         </tr>
       </tbody>
     </table>
@@ -36,19 +36,23 @@ import { mapState } from 'vuex';
 
 
 export default {
-  name: 'contactsList',
+  name: 'contacts',
   computed : mapState([ 'contacts', 'pageno', 'searchYn' ]),
   methods : {
     fetchButtonClick : function() {
+      store.commit(Constant.UPDATE_SEARCH_YN, false);
       this.$store.dispatch(Constant.SELECT_CONTACTS, {pageno : this.pageno, pagesize : 5})
     },
     deleteButtonClick : function(e) {
       let no = e.currentTarget.parentElement.parentElement.firstChild.innerHTML
       this.$store.dispatch(Constant.DELETE_CONTACT, no)
     },
-    updateButtonClick : function(e) {
+    infoButtonClick : function(e) {
       let no = e.currentTarget.parentElement.parentElement.firstChild.innerHTML
+      this.$router.push({ path: 'contacts/contact', params: { userId: 123 }})
       //여기서 update url로 이동시킨다
+      //이동시키기 전에 conctat state 값을 조회대상 기준으로 업데이트한다
+      //업데이트는 no만 진행한다.
     }
   }
 }
