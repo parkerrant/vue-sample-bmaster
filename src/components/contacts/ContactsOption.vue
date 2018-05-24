@@ -24,7 +24,6 @@ export default {
       //search action act
       var vthis = this;
 
-      this.$store.commit(Constant.UPDATE_SEARCH_KEYWORD, this.searchKeyword);
       this.$store.commit(Constant.CLEAR_CONTACTS);
       this.$store.commit(Constant.UPDATE_SEARCH_YN, true);
       this.$store.commit(Constant.UPDATE_PAGENO, 1);
@@ -39,13 +38,14 @@ export default {
       var vthis = this;
 
       this.$store.commit(Constant.CLEAR_CONTACTS);
+      this.searchKeyword = '';
       this.$store.dispatch(Constant.SELECT_CONTACTS, {pageno : this.statePageno, pagesize : Constant.PAGE_SIZE}).then(
         function(response){
           vthis.$store.commit(Constant.CONCAT_CONTACTS, response.contacts)
+
         }
       );
-      this.$store.commit(Constant.UPDATE_SEARCH_KEYWORD, '');
-      this.searchKeyword = '';
+
     },
     addButtonClick : function() {
       this.$router.push({ path: 'contacts/contact/add'});
@@ -53,8 +53,7 @@ export default {
   },
   computed : mapState({
     stateSearchYn : 'searchYn',
-    statePageno : 'pageno',
-    stateSearchKeyword1 : 'searchKeyword1'
+    statePageno : 'pageno'
     }
   )
 

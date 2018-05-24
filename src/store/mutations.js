@@ -10,10 +10,6 @@ export default{
     state.searchYn = payload;
   },
 
-  [Constant.UPDATE_SEARCH_KEYWORD] : (state, payload) => {
-    state.searchKeyword = payload;
-  },
-
   [Constant.DELETE_CONTACT] : (state, payload) => {
     for(let i=0; i<state.contacts.length; i++){
       if(state.contacts[i].no == payload){
