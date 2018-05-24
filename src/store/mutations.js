@@ -23,10 +23,20 @@ export default{
     }
   },
 
+  [Constant.UPDATE_CONTACT] : (state, payload) => {
+    for(let i=0; i<state.contacts.length; i++){
+      if(state.contacts[i].no == payload.no){
+       state.contacts[i] = payload;
+       break;
+     }
+    }
+  },
+
 
   [Constant.UPDATE_PAGENO] : (state, payload) => {
     state.pageno = payload;
   },
+
 
   [Constant.CONCAT_CONTACTS] : (state, payload) => {
     if(state.contacts.length > 0){

@@ -1,6 +1,9 @@
 import Constant from '@/const.js';
 import ContactsApi from '@/api/ContactsAPI.js';
 
+import ES6promise from 'es6-promise';
+ES6promise.polyfill();
+
 export default {
   [Constant.SELECT_CONTACTS] : (store, payload) => {
     //search
@@ -16,13 +19,18 @@ export default {
 
   [Constant.SELECT_CONTACT] : (store, payload) => {
 
-      ContactsApi.selectContact(payload.no)
+    return new Promise((resolve, reject) => {
+      ContactsApi.selectContact(payload)
       .then(function(response){
         return response.json()
       }).then(function(json){
-      store.commit(Constant.UPDATE_CONTACT, json.contacts);
-    }).catch(function(ex){
+        resolve(json)
+      }).catch(function(ex){
+
+        reject(ex)
+      })
     })
+
 
   },
 
@@ -50,6 +58,36 @@ export default {
     }).catch(function(ex){
     })
 
-  }
+  },
+
+  [Constant.INSERT_CONTACT] : (store, payload) => {
+
+    //search
+    ContactsApi.insertContact(payload)
+      .then(function(response){
+        return response.json()
+      }).then(function(json){
+        //insert success
+    }).catch(function(ex){
+    })
+
+  },
+
+  [Constant.UPDATE_CONTACT] : (store, payload) => {
+
+    return new Promise((resolve, reject) => {
+      ContactsApi.updateContact(payload)
+      .then(function(response){
+        return response.json()
+      }).then(function(json){
+        resolve(json);
+      }).catch(function(ex){
+        reject(ex);
+      })
+    })
+
+
+
+  },
 
 }

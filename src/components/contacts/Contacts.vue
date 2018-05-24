@@ -9,7 +9,7 @@
           <th>전화번호</th>
           <th>주소</th>
           <th>delete</th>
-          <th>상세</th>
+          <th>info</th>
         </tr>
       </thead>
       </tbody>
@@ -40,8 +40,8 @@ export default {
   computed : mapState([ 'contacts', 'pageno', 'searchYn' ]),
   methods : {
     fetchButtonClick : function() {
-      store.commit(Constant.UPDATE_SEARCH_YN, false);
-      this.$store.dispatch(Constant.SELECT_CONTACTS, {pageno : this.pageno, pagesize : 5})
+      this.$store.commit(Constant.UPDATE_SEARCH_YN, false);
+      this.$store.dispatch(Constant.SELECT_CONTACTS, {pageno : this.pageno, pagesize : Constant.PAGE_SIZE})
     },
     deleteButtonClick : function(e) {
       let no = e.currentTarget.parentElement.parentElement.firstChild.innerHTML
@@ -49,10 +49,7 @@ export default {
     },
     infoButtonClick : function(e) {
       let no = e.currentTarget.parentElement.parentElement.firstChild.innerHTML
-      this.$router.push({ path: 'contacts/contact', params: { userId: 123 }})
-      //여기서 update url로 이동시킨다
-      //이동시키기 전에 conctat state 값을 조회대상 기준으로 업데이트한다
-      //업데이트는 no만 진행한다.
+      this.$router.push({ path: '/contacts/contact/' + no})
     }
   }
 }

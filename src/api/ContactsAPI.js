@@ -20,44 +20,28 @@ export default {
     return fetch(url)
   },
 
-  insertContactOne : (contact) => {
-    var url = "http://sample.bmaster.kro.kr/contacts"
-
+  insertContact : (contact) => {
+    var url = "http://sample.bmaster.kro.kr/contacts";
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", 'application/json')
-
-    fetch(url, {
-        method: 'post',
-        headers : myHeaders,
-        body : JSON.stringify(contact)
-    }).then(function(response){
-        return response.json()
-    }).then(function(json){
-        alert(json.message)
-    }).catch(function(ex){
-
-    })
+    return fetch(url, {
+      method : 'post',
+      headers : myHeaders,
+      body : JSON.stringify(contact)});
   },
+
   updateContact : (contact) => {
     var url = "http://sample.bmaster.kro.kr/contacts/" + contact.no
-
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", 'application/json')
-
-    fetch(url, {
+    return fetch(url, {
         method: 'put',
         headers : myHeaders,
         body : JSON.stringify(contact)
-    }).then(function(response){
-        return response.json()
-    }).then(function(json){
-        alert(json.message)
-    }).catch(function(ex){
-
-    })
+    });
   },
-  deleteContact : (no) => {
 
+  deleteContact : (no) => {
     var url = "http://sample.bmaster.kro.kr/contacts/"+no
     return fetch(url, {method : 'delete'});
 

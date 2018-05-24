@@ -21,21 +21,17 @@ const router = new Router ({
           }
         },
         {
-          path: '/contact/:no',
+          path: 'contact/add',
           components: {
-            a: function (resolve) { require(['@/components/contacts/ContactsOption.vue'], resolve) },
-            b: function (resolve) { require(['@/components/contacts/Contacts.vue'], resolve) },
-            c: function (resolve) { require(['@/components/contacts/popup/Contact.vue'], resolve) }
+            a: function (resolve) { require(['@/components/contacts/popup/ContactAdd.vue'], resolve) }
           }
         },
         {
-          path: '/contact/add',
+          path: 'contact/:no',
           components: {
-            a: function (resolve) { require(['@/components/contacts/ContactsOption.vue'], resolve) },
-            b: function (resolve) { require(['@/components/contacts/Contacts.vue'], resolve) },
-            c: function (resolve) { require(['@/components/contacts/popup/ContactAdd.vue'], resolve) }
+            a: function (resolve) { require(['@/components/contacts/popup/Contact.vue'], resolve) }
           }
-        },
+        }
       ]
     }
 

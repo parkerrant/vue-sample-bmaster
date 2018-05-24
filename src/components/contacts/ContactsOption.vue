@@ -3,6 +3,7 @@
     <input type="text" placeholder="search" v-model="searchKeyword" @keyup.enter="searchButtonClick" />
     <input type="button" value="search" @click="searchButtonClick" />
     <input type="button" value="seeAll" @click="seeAllButtonClick" v-show="stateSearchYn" />
+    <input type="button" value="add" @click="addButtonClick" v-show="!stateSearchYn" />
   </div>
 </template>
 
@@ -30,9 +31,12 @@ export default {
     },
     seeAllButtonClick : function(){
       this.$store.commit(Constant.CLEAR_CONTACTS);
-      this.$store.dispatch(Constant.SELECT_CONTACTS, {pageno : this.statePageno, pagesize : 5});
+      this.$store.dispatch(Constant.SELECT_CONTACTS, {pageno : this.statePageno, pagesize : Constant.PAGE_SIZE});
       this.$store.commit(Constant.UPDATE_SEARCH_KEYWORD, '');
       this.searchKeyword = '';
+    },
+    addButtonClick : function() {
+      this.$router.push({ path: 'contacts/contact/add'});
     }
   },
   computed : mapState({

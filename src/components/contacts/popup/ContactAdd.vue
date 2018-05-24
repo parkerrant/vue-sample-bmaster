@@ -1,27 +1,11 @@
 <template>
   <div>
-
-    <table>
-      <thead>
-        <tr>
-          <th>번호</th>
-          <th>이름</th>
-          <th>전화번호</th>
-          <th>주소</th>
-        </tr>
-      </thead>
-      </tbody>
-        <tr v-for="contact in contacts">
-          <td>{{contact.no}}</td>
-          <td>{{contact.name}}</td>
-          <td>{{contact.tel}}</td>
-          <td>{{contact.address}}</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <input type="button" value="fetch" @click="fetchButtonClick" v-show="!searchYn" />
-
+    <p>contact add</p>
+    <input type="text" placeholder="name" v-model="name">
+    <input type="text" placeholder="tel" v-model="tel" >
+    <input type="text" placeholder="address" v-model="address">
+    <input type="button" value="add" @click="addButtonClick">
+    <input type="button" value="go back" @click="cancelButtonClick">
   </div>
 </template>
 
@@ -33,10 +17,22 @@ import { mapState } from 'vuex';
 
 export default {
   name: 'contactAdd',
-  computed : mapState([ 'contacts', 'pageno', 'searchYn' ]),
+  data : function(){
+    return {name : '', tel : '', address : ''}
+  },
   methods : {
-    fetchButtonClick : function() {
-      this.$store.dispatch(Constant.SELECT_CONTACTS, {pageno : this.pageno, pagesize : 5})
+    cancelButtonClick : function(){
+      this.$router.go(-1);
+    },
+    addButtonClick : function(){
+
+      this.$store.dispatch(Constant.INSERT_CONTACT, {name : this.name, tel : this.tel, address : this.address});
+
+      //초기화
+      this.$store.commit(Constant.CLEAR_CONTACTS);
+      this.$store.commit(Constant.UPDATE_PAGENO, 1);
+
+      this.$router.push({ path: '/contacts'});
     }
   }
 }
