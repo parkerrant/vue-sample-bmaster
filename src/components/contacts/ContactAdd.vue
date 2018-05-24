@@ -11,7 +11,7 @@
 
 <script type="text/javascript">
 
-import Constant from '@/const.js';
+import Constant from '@/constants/contacts/contactConstants.js';
 import { mapState } from 'vuex';
 
 

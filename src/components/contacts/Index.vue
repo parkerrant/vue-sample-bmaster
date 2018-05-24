@@ -1,9 +1,9 @@
 <template>
   <section>
 
-    <router-view name = "a" ></router-view>
-    <router-view name = "b" ></router-view>
-    <router-view name = "c" ></router-view>
+    <router-view name = "top" ></router-view>
+    <router-view name = "middle" ></router-view>
+    <router-view name = "bottom" ></router-view>
 
   </section>
 </template>

@@ -5,7 +5,7 @@
 
 import Constant from '@/constants/contacts/contactConstants.js'
 
-export default{
+export default {
   [Constant.UPDATE_SEARCH_YN] : (state, payload) => {
     state.searchYn = payload;
   },
@@ -51,4 +51,3 @@ export default{
     state.contacts = [];
   }
 }
-

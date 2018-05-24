@@ -16,20 +16,20 @@ const router = new Router ({
         {
           path: '/',
           components: {
-            a: function (resolve) { require(['@/components/contacts/ContactsOption.vue'], resolve) },
-            b: function (resolve) { require(['@/components/contacts/Contacts.vue'], resolve) }
+            top: function (resolve) { require(['@/components/contacts/ContactsOption.vue'], resolve) },
+            middle: function (resolve) { require(['@/components/contacts/Contacts.vue'], resolve) }
           }
         },
         {
           path: 'contact/add',
           components: {
-            a: function (resolve) { require(['@/components/contacts/popup/ContactAdd.vue'], resolve) }
+            bottom: function (resolve) { require(['@/components/contacts/ContactAdd.vue'], resolve) }
           }
         },
         {
           path: 'contact/:no',
           components: {
-            a: function (resolve) { require(['@/components/contacts/popup/Contact.vue'], resolve) }
+            bottom: function (resolve) { require(['@/components/contacts/Contact.vue'], resolve) }
           }
         }
       ]

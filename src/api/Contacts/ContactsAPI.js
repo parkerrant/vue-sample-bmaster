@@ -1,6 +1,6 @@
 import 'fetch';
 import ES6promise from 'es6-promise';
-import Constant from "../const";
+import Constant from "../../const";
 
 ES6promise.polyfill();
 
