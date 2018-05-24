@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <article>
     <p>contact add</p>
     <input type="text" placeholder="name" v-model="name">
     <input type="text" placeholder="tel" v-model="tel" >
     <input type="text" placeholder="address" v-model="address">
     <input type="button" value="add" @click="addButtonClick">
     <input type="button" value="go back" @click="cancelButtonClick">
-  </div>
+  </article>
 </template>
 
 <script type="text/javascript">

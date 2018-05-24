@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <article>
     <input type="text" placeholder="search" v-model="searchKeyword" @keyup.enter="searchButtonClick" />
     <input type="button" value="search" @click="searchButtonClick" />
     <input type="button" value="seeAll" @click="seeAllButtonClick" v-show="stateSearchYn" />
     <input type="button" value="add" @click="addButtonClick" v-show="!stateSearchYn" />
-  </div>
+  </article>
 </template>
 
 

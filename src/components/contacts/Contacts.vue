@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <article>
 
     <table>
       <thead>
@@ -26,7 +26,7 @@
 
     <input type="button" value="fetch" @click="fetchButtonClick" v-show="!searchYn" />
 
-  </div>
+  </article>
 </template>
 
 <script type="text/javascript">
