@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="container">
     <vueHeader></vueHeader>
     <vueNav></vueNav>
     <router-view></router-view>

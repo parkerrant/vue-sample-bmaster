@@ -1,8 +1,12 @@
 <template>
-  <nav>
-    <p>nav area</p>
-    <router-link to="/contacts">Go to Contacts List</router-link>
+  <nav class="row">
+    <div class="col s12">
+      <router-link to="/contacts">go to contacts</router-link>
+    </div>
   </nav>
+
+
+
 </template>
 
 

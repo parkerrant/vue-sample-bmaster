@@ -8,6 +8,10 @@ import ES6promise from 'es6-promise';
 ES6promise.polyfill();
 
 
+require("materialize-css/dist/css/materialize.css");
+require("materialize-css/dist/js/materialize.js");
+
+
 new Vue({
   store,
   router,

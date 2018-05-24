@@ -1,30 +1,35 @@
 <template>
-  <article>
+  <article class="row">
+    <div class="col s12">
 
-    <table>
-      <thead>
-        <tr>
-          <th>번호</th>
-          <th>이름</th>
-          <th>전화번호</th>
-          <th>주소</th>
-          <th>delete</th>
-          <th>info</th>
-        </tr>
-      </thead>
-      </tbody>
-        <tr v-for="contact in contacts">
-          <td>{{contact.no}}</td>
-          <td>{{contact.name}}</td>
-          <td>{{contact.tel}}</td>
-          <td>{{contact.address}}</td>
-          <td><input type="button" value="delete" @click="deleteButtonClick"></td>
-          <td><input type="button" value="update" @click="infoButtonClick"></td>
-        </tr>
-      </tbody>
-    </table>
+      <table class="centered striped">
+        <thead>
+          <tr>
+            <th>번호</th>
+            <th>이름</th>
+            <th>전화번호</th>
+            <th>주소</th>
+            <th>delete</th>
+            <th>info</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="contact in contacts">
+            <td>{{contact.no}}</td>
+            <td>{{contact.name}}</td>
+            <td>{{contact.tel}}</td>
+            <td>{{contact.address}}</td>
+            <td><input type="button" class="waves-effect waves-light btn-small" value="delete" @click="deleteButtonClick"></td>
+            <td><input type="button" class="waves-effect waves-light btn-small" value="update" @click="infoButtonClick"></td>
+          </tr>
+        </tbody>
+      </table>
 
-    <input type="button" value="fetch" @click="fetchButtonClick" v-show="!searchYn" />
+    </div>
+
+    <div class="col s1 push-s5">
+      <input type="button" class="waves-effect waves-light btn" value="fetch" @click="fetchButtonClick" v-show="!searchYn" />
+    </div>
 
   </article>
 </template>

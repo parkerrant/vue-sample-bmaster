@@ -12,6 +12,8 @@
   "dependencies": {
     "es6-promise": "^4.2.4",
     "fetch": "^1.1.0",
+    "materialize-css": "^1.0.0-rc.1",
+    "style-loader": "^0.21.0",
     "vue": "^2.5.11",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
