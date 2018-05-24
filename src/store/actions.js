@@ -1,21 +1,23 @@
 import Constant from '@/constants/contacts/contactConstants.js';
 import ContactsApi from '@/api/Contacts/ContactsAPI.js';
 
-import ES6promise from 'es6-promise';
-ES6promise.polyfill();
-
 export default {
 
   [Constant.SELECT_CONTACTS] : (store, payload) => {
     //search
-    ContactsApi.selectContacts(payload.pageno, payload.pagesize)
-      .then(function(response){
-        return response.json()
-      }).then(function(json){
-      store.commit(Constant.CONCAT_CONTACTS, json.contacts);
-      store.commit(Constant.UPDATE_PAGENO, json.pageno + 1);
-    }).catch(function(ex){
+
+    return new Promise((resolve, reject) => {
+      ContactsApi.selectContacts(payload.pageno, payload.pagesize)
+        .then(function(response){
+          return response.json()
+        }).then(function(json){
+        resolve(json);
+      }).catch(function(ex){
+        reject(ex);
+      })
     })
+
+
   },
 
   [Constant.SELECT_CONTACT] : (store, payload) => {
@@ -27,7 +29,6 @@ export default {
       }).then(function(json){
         resolve(json)
       }).catch(function(ex){
-
         reject(ex)
       })
     })
@@ -38,39 +39,51 @@ export default {
   [Constant.SEARCH_CONTACTS] : (store, payload) => {
 
     //search
-    ContactsApi.searchContacts(payload)
-      .then(function(response){
-        return response.json()
-      }).then(function(json){
-      store.commit(Constant.CONCAT_CONTACTS, json);
-    }).catch(function(ex){
+    return new Promise((resolve, reject) => {
+      ContactsApi.searchContacts(payload)
+        .then(function(response){
+          return response.json()
+        }).then(function(json){
+        resolve(json)
+      }).catch(function(ex){
+        reject(ex)
+      })
     })
+
+
 
   },
 
   [Constant.DELETE_CONTACT] : (store, payload) => {
 
-    //search
-    ContactsApi.deleteContact(payload)
-      .then(function(response){
-        return response.json()
-      }).then(function(json){
-      store.commit(Constant.DELETE_CONTACT, payload);
-    }).catch(function(ex){
+    return new Promise((resolve, reject) => {
+      ContactsApi.deleteContact(payload)
+        .then(function(response){
+          return response.json()
+        }).then(function(json){
+        resolve(json);
+      }).catch(function(ex){
+        reject(ex);
+      })
     })
+
+
 
   },
 
   [Constant.INSERT_CONTACT] : (store, payload) => {
 
-    //search
-    ContactsApi.insertContact(payload)
-      .then(function(response){
-        return response.json()
-      }).then(function(json){
-        //insert success
-    }).catch(function(ex){
+    return new Promise((resolve, rejcet) => {
+      ContactsApi.insertContact(payload)
+        .then(function(response){
+          return response.json()
+        }).then(function(json){
+        resolve(json);
+      }).catch(function(ex){
+        reject(ex);
+      })
     })
+
 
   },
 

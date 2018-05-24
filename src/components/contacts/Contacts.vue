@@ -40,12 +40,26 @@ export default {
   computed : mapState([ 'contacts', 'pageno', 'searchYn' ]),
   methods : {
     fetchButtonClick : function() {
+
+      var vthis = this;
+
       this.$store.commit(Constant.UPDATE_SEARCH_YN, false);
-      this.$store.dispatch(Constant.SELECT_CONTACTS, {pageno : this.pageno, pagesize : Constant.PAGE_SIZE})
+      this.$store.dispatch(Constant.SELECT_CONTACTS, {pageno : this.pageno, pagesize : Constant.PAGE_SIZE}).then(
+        function(response){
+          vthis.$store.commit(Constant.CONCAT_CONTACTS, response.contacts);
+          vthis.$store.commit(Constant.UPDATE_PAGENO, response.pageno + 1);
+        }
+      )
     },
     deleteButtonClick : function(e) {
       let no = e.currentTarget.parentElement.parentElement.firstChild.innerHTML
-      this.$store.dispatch(Constant.DELETE_CONTACT, no)
+      var vthis = this;
+
+      this.$store.dispatch(Constant.DELETE_CONTACT, no).then(
+        function(response){
+          vthis.$store.commit(Constant.DELETE_CONTACT, no);
+        }
+      )
     },
     infoButtonClick : function(e) {
       let no = e.currentTarget.parentElement.parentElement.firstChild.innerHTML

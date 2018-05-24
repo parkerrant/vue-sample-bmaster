@@ -1,8 +1,5 @@
 import 'fetch';
-import ES6promise from 'es6-promise';
-import Constant from "../../const";
-
-ES6promise.polyfill();
+import Constant from "@/constants/contacts/contactConstants";
 
 export default {
   selectContacts : (pageno, pagesize) => {

@@ -26,13 +26,15 @@ export default {
     },
     addButtonClick : function(){
 
-      this.$store.dispatch(Constant.INSERT_CONTACT, {name : this.name, tel : this.tel, address : this.address});
+      var vthis = this;
 
-      //초기화
-      this.$store.commit(Constant.CLEAR_CONTACTS);
-      this.$store.commit(Constant.UPDATE_PAGENO, 1);
-
-      this.$router.push({ path: '/contacts'});
+      this.$store.dispatch(Constant.INSERT_CONTACT, {name : this.name, tel : this.tel, address : this.address}).then(
+        function(response){
+          vthis.$store.commit(Constant.CLEAR_CONTACTS);
+          vthis.$store.commit(Constant.UPDATE_PAGENO, 1);
+          vthis.$router.push({ path: '/contacts'});
+        }
+      )
     }
   }
 }

@@ -22,16 +22,28 @@ export default {
   methods : {
     searchButtonClick : function(){
       //search action act
+      var vthis = this;
+
       this.$store.commit(Constant.UPDATE_SEARCH_KEYWORD, this.searchKeyword);
       this.$store.commit(Constant.CLEAR_CONTACTS);
       this.$store.commit(Constant.UPDATE_SEARCH_YN, true);
       this.$store.commit(Constant.UPDATE_PAGENO, 1);
-      this.$store.dispatch(Constant.SEARCH_CONTACTS, this.searchKeyword);
+      this.$store.dispatch(Constant.SEARCH_CONTACTS, this.searchKeyword).then(
+        function(response){
+          vthis.$store.commit(Constant.CONCAT_CONTACTS, response)
+        }
+      );
 
     },
     seeAllButtonClick : function(){
+      var vthis = this;
+
       this.$store.commit(Constant.CLEAR_CONTACTS);
-      this.$store.dispatch(Constant.SELECT_CONTACTS, {pageno : this.statePageno, pagesize : Constant.PAGE_SIZE});
+      this.$store.dispatch(Constant.SELECT_CONTACTS, {pageno : this.statePageno, pagesize : Constant.PAGE_SIZE}).then(
+        function(response){
+          vthis.$store.commit(Constant.CONCAT_CONTACTS, response.contacts)
+        }
+      );
       this.$store.commit(Constant.UPDATE_SEARCH_KEYWORD, '');
       this.searchKeyword = '';
     },
