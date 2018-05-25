@@ -44,7 +44,8 @@ export default {
   name: 'contacts',
   computed : mapState([ 'contacts', 'pageno', 'searchYn' ]),
   mounted : function(){
-    document.querySelector('#fetchButton').click();
+    //기능상 버그 다수 발생하여 제거
+    //document.querySelector('#fetchButton').click();
   },
   methods : {
     fetchButtonClick : function() {
