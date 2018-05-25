@@ -1,9 +1,10 @@
 <template>
   <header class="row">
     <div class="col s12">
-      <h1>VUE SAMPLE BMASTER</h1>
+      <h3 class="red-text lighten-2-text">VUE SAMPLE BMASTER</h3>
     </div>
   </header>
+
 </template>
 
 
@@ -17,3 +18,8 @@ export default {
 
 </script>
 
+<style>
+  header h3{
+    text-align:center;
+  }
+</style>

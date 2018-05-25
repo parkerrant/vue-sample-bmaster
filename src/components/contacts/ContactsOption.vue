@@ -1,20 +1,22 @@
 <template>
   <article class="row">
     <div class="row">
-      <div class="col s11">
 
-        <input type="text" placeholder="search" v-model="searchKeyword" @keyup.enter="searchButtonClick" />
+      <div class="col s6">
+        <input type="text" v-model="searchKeyword" @keyup.enter="searchButtonClick"placeholder="Input Search Keyword" >
       </div>
+
       <div class="col s1">
-        <input type="button" class="waves-effect waves-light btn" value="search" @click="searchButtonClick" />
+        <a class="red-text lighten-2-text a-custom-button" @click="searchButtonClick">Search</a>
       </div>
+
     </div>
     <div class="row">
       <div class="col s1">
-       <input type="button" class="waves-effect waves-light btn" value="seeAll" @click="seeAllButtonClick" v-show="stateSearchYn" />
+        <a class="red-text lighten-2-text a-custom-button" @click="seeAllButtonClick" v-show="stateSearchYn">See All</a>
       </div>
       <div class="col s1 push-s10">
-        <input type="button" class="waves-effect waves-light btn" value="add" @click="addButtonClick" v-show="!stateSearchYn" />
+        <a class="red-text lighten-2-text a-custom-button" @click="addButtonClick" v-show="!stateSearchYn">Add</a>
       </div>
     </div>
   </article>
@@ -42,7 +44,12 @@ export default {
       this.$store.commit(Constant.UPDATE_PAGENO, 1);
       this.$store.dispatch(Constant.SEARCH_CONTACTS, this.searchKeyword).then(
         function(response){
-          vthis.$store.commit(Constant.CONCAT_CONTACTS, response)
+          if(response.status == 'fail'){
+            M.toast({html: response.message});
+          }else{
+           M.toast({html: 'Search Completed (Count : '+response.length+')'});
+           vthis.$store.commit(Constant.CONCAT_CONTACTS, response)
+          }
         }
       );
 
@@ -73,4 +80,3 @@ export default {
 }
 
 </script>
-

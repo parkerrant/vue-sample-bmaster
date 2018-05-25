@@ -13,7 +13,8 @@ export default {
         }).then(function(json){
         resolve(json);
       }).catch(function(ex){
-        reject(ex);
+        M.toast({html: Constant.SELECT_CONTACTS + ' failed!!'});
+        reject(Error(ex.toString()));
       })
     })
 
@@ -29,7 +30,8 @@ export default {
       }).then(function(json){
         resolve(json)
       }).catch(function(ex){
-        reject(ex)
+        M.toast({html: Constant.SELECT_CONTACT + ' failed!!'});
+        reject(Error(ex.toString()));
       })
     })
 
@@ -46,7 +48,8 @@ export default {
         }).then(function(json){
         resolve(json)
       }).catch(function(ex){
-        reject(ex)
+        M.toast({html: Constant.SEARCH_CONTACTS + ' failed!!'});
+        reject(Error(ex.toString()));
       })
     })
 
@@ -63,7 +66,8 @@ export default {
         }).then(function(json){
         resolve(json);
       }).catch(function(ex){
-        reject(ex);
+        M.toast({html: Constant.DELETE_CONTACT + ' failed!!'});
+        reject(Error(ex.toString()));
       })
     })
 
@@ -80,7 +84,8 @@ export default {
         }).then(function(json){
         resolve(json);
       }).catch(function(ex){
-        reject(ex);
+        M.toast({html: Constant.INSERT_CONTACT + ' failed!!'});
+        reject(Error(ex.toString()));
       })
     })
 
@@ -96,7 +101,8 @@ export default {
       }).then(function(json){
         resolve(json);
       }).catch(function(ex){
-        reject(ex);
+        M.toast({html: Constant.UPDATE_CONTACT + ' failed!!'});
+        reject(Error(ex.toString()));
       })
     })
   },

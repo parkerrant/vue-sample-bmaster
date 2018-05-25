@@ -1,11 +1,25 @@
 <template>
-  <article>
-    <p>contact add</p>
-    <input type="text" placeholder="name" v-model="name">
-    <input type="text" placeholder="tel" v-model="tel" >
-    <input type="text" placeholder="address" v-model="address">
-    <input type="button" value="add" @click="addButtonClick">
-    <input type="button" value="go back" @click="cancelButtonClick">
+  <article class="row">
+    <div class="input-field col s12">
+      <input type="text" v-model="name">
+      <label for="Name">Name</label>
+    </div>
+    <div class="input-field col s12">
+      <input type="text" v-model="tel">
+      <label for="Tel">Tel</label>
+    </div>
+    <div class="input-field col s12">
+      <input type="text" v-model="address">
+      <label for="Address">Address</label>
+    </div>
+
+    <div class="col s2">
+      <a class="red-text lighten-2-text a-custom-button" @click="addButtonClick">Add</a>
+    </div>
+    <div class="col s2">
+      <a class="red-text lighten-2-text a-custom-button" @click="cancelButtonClick">Cancel</a>
+    </div>
+
   </article>
 </template>
 
@@ -30,6 +44,7 @@ export default {
 
       this.$store.dispatch(Constant.INSERT_CONTACT, {name : this.name, tel : this.tel, address : this.address}).then(
         function(response){
+          M.toast({html: 'Add Completed'});
           vthis.$store.commit(Constant.CLEAR_CONTACTS);
           vthis.$store.commit(Constant.UPDATE_PAGENO, 1);
           vthis.$router.push({ path: '/contacts'});

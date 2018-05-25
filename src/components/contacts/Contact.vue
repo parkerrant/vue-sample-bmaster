@@ -1,16 +1,33 @@
 <template>
-  <article>
+  <article class="row">
+    <div class="input-field col s12">
+      <input disabled type="text" v-model="contact.no" class="validate">
+      <label class="active" for="No">No</label>
+    </div>
 
-    <p>contact detail info</p>
+    <div class="input-field col s12">
+      <input type="text" v-model="contact.name">
+      <label class="active" for="Name">Name</label>
+    </div>
+    <div class="input-field col s12">
+      <input type="text" v-model="contact.tel">
+      <label class="active" for="Tel">Tel</label>
+    </div>
+    <div class="input-field col s12">
+      <input type="text" v-model="contact.address">
+      <label class="active" for="Address">Address</label>
+    </div>
+    <div class="input-field col s12">
+      <input type="text" v-model="contact.photo">
+      <label class="active" for="Photo">Photo</label>
+    </div>
 
-    <input type="text" v-model="contact.no">
-    <input type="text" v-model="contact.name">
-    <input type="text" v-model="contact.tel">
-    <input type="text" v-model="contact.address">
-    <input type="text" v-model="contact.photo">
-
-    <input type="button" value="update" @click="updateButtonClick">
-    <input type="button" value="cancel" @click="cancelButtonClick">
+    <div class="col s2">
+      <a class="red-text lighten-2-text a-custom-button" @click="updateButtonClick">Update</a>
+    </div>
+    <div class="col s2">
+      <a class="red-text lighten-2-text a-custom-button" @click="cancelButtonClick">Cancel</a>
+    </div>
 
   </article>
 </template>
@@ -32,6 +49,9 @@ export default {
 
     this.$store.dispatch(Constant.SELECT_CONTACT, this.$route.params.no).then(
       function(response){
+        if(response.no == null){
+          M.toast({html: 'ContactNo is invaild'});
+        }
         vthis.contact = response;
       }
     )
@@ -43,6 +63,7 @@ export default {
 
       this.$store.dispatch(Constant.UPDATE_CONTACT, this.contact).then(
         function(response){
+          M.toast({html: 'Update Completed'});
           vthis.$store.commit(Constant.UPDATE_CONTACT, vthis.contact);
           vthis.$router.push({ path: '/contacts'});
         }

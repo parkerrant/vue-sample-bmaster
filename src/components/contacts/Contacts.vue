@@ -2,15 +2,15 @@
   <article class="row">
     <div class="col s12">
 
-      <table class="centered striped">
-        <thead>
+      <table class="centered">
+        <thead class="red-text lighten-2-text">
           <tr>
-            <th>번호</th>
-            <th>이름</th>
-            <th>전화번호</th>
-            <th>주소</th>
-            <th>delete</th>
-            <th>info</th>
+            <th>No</th>
+            <th>Name</th>
+            <th>Tel</th>
+            <th>Address</th>
+            <th></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -19,8 +19,8 @@
             <td>{{contact.name}}</td>
             <td>{{contact.tel}}</td>
             <td>{{contact.address}}</td>
-            <td><input type="button" class="waves-effect waves-light btn-small" value="delete" @click="deleteButtonClick"></td>
-            <td><input type="button" class="waves-effect waves-light btn-small" value="update" @click="infoButtonClick"></td>
+            <td><a class="red-text lighten-2-text a-custom-button" @click="deleteButtonClick">Delete</a></td>
+            <td><a class="red-text lighten-2-text a-custom-button" @click="infoButtonClick">Detail</a></td>
           </tr>
         </tbody>
       </table>
@@ -28,7 +28,7 @@
     </div>
 
     <div class="col s1 push-s5">
-      <input type="button" class="waves-effect waves-light btn" value="fetch" @click="fetchButtonClick" v-show="!searchYn" />
+      <a class="red-text lighten-2-text a-custom-button" id="fetchButton" @click="fetchButtonClick" v-show="!searchYn">Fetch</a>
     </div>
 
   </article>
@@ -43,6 +43,9 @@ import { mapState } from 'vuex';
 export default {
   name: 'contacts',
   computed : mapState([ 'contacts', 'pageno', 'searchYn' ]),
+  mounted : function(){
+    document.querySelector('#fetchButton').click();
+  },
   methods : {
     fetchButtonClick : function() {
 
@@ -51,6 +54,7 @@ export default {
       this.$store.commit(Constant.UPDATE_SEARCH_YN, false);
       this.$store.dispatch(Constant.SELECT_CONTACTS, {pageno : this.pageno, pagesize : Constant.PAGE_SIZE}).then(
         function(response){
+          M.toast({html: 'Fetch Completed'});
           vthis.$store.commit(Constant.CONCAT_CONTACTS, response.contacts);
           vthis.$store.commit(Constant.UPDATE_PAGENO, response.pageno + 1);
         }
@@ -62,6 +66,7 @@ export default {
 
       this.$store.dispatch(Constant.DELETE_CONTACT, no).then(
         function(response){
+          M.toast({html: 'Delete Completed'});
           vthis.$store.commit(Constant.DELETE_CONTACT, no);
         }
       )
