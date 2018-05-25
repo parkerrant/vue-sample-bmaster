@@ -13,7 +13,7 @@
     </div>
     <div class="row">
       <div class="col s1">
-        <a class="red-text lighten-2-text a-custom-button" @click="seeAllButtonClick" v-show="stateSearchYn">See All</a>
+        <a class="red-text lighten-2-text a-custom-button" @click="seeAllButtonClick" v-show="stateSearchYn">All</a>
       </div>
       <div class="col s1 push-s10">
         <a class="red-text lighten-2-text a-custom-button" @click="addButtonClick" v-show="!stateSearchYn">Add</a>
@@ -63,6 +63,7 @@ export default {
         function(response){
           vthis.$store.commit(Constant.CONCAT_CONTACTS, response.contacts)
           vthis.$store.commit(Constant.UPDATE_SEARCH_YN, false)
+          vthis.$store.commit(Constant.UPDATE_PAGENO, response.pageno + 1)
         }
       );
 
