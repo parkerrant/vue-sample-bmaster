@@ -9,7 +9,7 @@ ES6promise.polyfill();
 
 
 require("materialize-css/dist/css/materialize.css");
-require("@/dist/css/style.css");
+require("@/assets/css/style.css");
 require("materialize-css/dist/js/materialize.js");
 
 new Vue({
